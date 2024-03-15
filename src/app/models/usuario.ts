@@ -9,4 +9,5 @@ export interface Usuario{
     username: string;//
     dateOfBirth: string;//
     image: string;//
+    birthDate?: string;
   }

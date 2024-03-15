@@ -35,7 +35,7 @@ export class HomeComponent {
       const id = +params['id'];
       this.userService.getUserById(id).subscribe((user) => {
         this.usuario = user;
-        console.log(user);
+        console.log("Seteado -> ", this.usuario);
         const fullName = ''+ this.usuario.name + '' + this.usuario.lastName;
         const letterCount = this.countLetters(fullName);
         console.log(letterCount);

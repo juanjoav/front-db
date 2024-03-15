@@ -25,8 +25,9 @@ export class UsersService {
   }
 
   getUserById(id: number): Observable<Usuario> {
-    const headers = this.setAuthorizationHeader();
-    return this.http.get<Usuario>(`${this.baseUrl}get/${id}`,headers);
+    //const headers = this.setAuthorizationHeader();
+    console.log(`${this.newBaseUrl}get/${id}`);
+    return this.http.get<Usuario>(`${this.newBaseUrl}${id}`/*,headers*/);
   }
 
   getUserByEmail(email: string): Observable<Usuario> {
