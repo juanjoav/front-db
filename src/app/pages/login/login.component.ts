@@ -18,8 +18,8 @@ export class LoginComponent {
 
   constructor(private userService: UsersService, private router: Router, private formBuilder: FormBuilder) {
     this.registroForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      email: ['', /*[Validators.required,]*/],
+      password: ['', /*Validators.required*/]
     });
   }
 
@@ -27,11 +27,11 @@ export class LoginComponent {
     console.log(this.registroForm.value);
   
     if (this.registroForm.valid) {
-      const userForm: { email: string, password: string } = this.registroForm.value;
+      const userForm: { username: string, password: string } = this.registroForm.value;
   
-      this.userService.login(userForm.email, userForm.password).subscribe(
+      this.userService.login(userForm.username, userForm.password).subscribe(
         (response: any) => {
-          this.userService.getUserByEmail(userForm.email).subscribe(
+          this.userService.getUserByEmail(userForm.username).subscribe(
             (user) => {
               this.user = user;
               console.log("Usuario -> ", user);
@@ -52,8 +52,14 @@ export class LoginComponent {
           }
         }
       );
+
+      
     } else {
       alert("Por favor, complete todos los campos correctamente.");
     }
+  }
+
+  travel(){
+    this.router.navigate(['/home/' + 1]);
   }
 }

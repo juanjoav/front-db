@@ -10,7 +10,7 @@ import { Usuario } from '../models/usuario';
 export class UsersService {
 
   private baseUrl = 'http://localhost:8080/user/';
-  private loginUrl = 'http://localhost:8080/login';
+  private loginUrl = 'http://localhost:8080/users/login';
   private authTokenKey = 'Authorization';
   private cachedHeaders: HttpHeaders | null = null;
 
