@@ -18,7 +18,7 @@ export class LoginComponent {
 
   constructor(private userService: UsersService, private router: Router, private formBuilder: FormBuilder) {
     this.registroForm = this.formBuilder.group({
-      email: ['', /*[Validators.required,]*/],
+      username: ['', /*[Validators.required,]*/],
       password: ['', /*Validators.required*/]
     });
   }
@@ -31,17 +31,11 @@ export class LoginComponent {
   
       this.userService.login(userForm.username, userForm.password).subscribe(
         (response: any) => {
-          this.userService.getUserByEmail(userForm.username).subscribe(
-            (user) => {
-              this.user = user;
-              console.log("Usuario -> ", user);
-              
-              this.router.navigate(['/home/' + this.user.id]);
-            },
-            (error) => {
-              console.error("Error al obtener el usuario: ", error);
-            }
-          );
+          console.log("Respuesta -> ",response);
+          if(response != null){
+            console.log(" ID " + response.user.id)
+            this.router.navigate(['/home/' + response.user.id]);
+          }
         },
         (error) => {
           if (error.status === 401) {

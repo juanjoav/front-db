@@ -10,7 +10,7 @@ import { Usuario } from '../models/usuario';
 export class UsersService {
 
   private baseUrl = 'http://localhost:8080/user/';
-  private loginUrl = 'http://localhost:8080/users/login';
+  private newBaseUrl = 'http://localhost:8080/api/users/';
   private authTokenKey = 'Authorization';
   private cachedHeaders: HttpHeaders | null = null;
 
@@ -48,12 +48,12 @@ export class UsersService {
   }
 
 
-  login(email: string, password: string): Observable<any> {
-    const credentials = { email, password };
-    return this.http.post<any>(this.loginUrl, credentials).pipe(
+  login(username: string, password: string): Observable<any> {
+    const credentials = { username, password };
+    return this.http.post<any>(`${this.newBaseUrl}login`, credentials).pipe(
       tap(response => {
         console.log("Respuesta -> ",response.Authorization);
-        localStorage.setItem(this.authTokenKey, response.Authorization);
+        //localStorage.setItem(this.authTokenKey, response.Authorization);
       })
     );
   }
