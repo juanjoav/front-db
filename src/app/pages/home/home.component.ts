@@ -14,10 +14,13 @@ export class HomeComponent {
     id: 0,
     name: '',
     lastName: '',
-    address: '',
-    phone: '',
-    email: '',
+    // address: '',
+    // phone: '',
+    // email: '',
+    username: '',
     password: '',
+    dateOfBirth: '',
+    image: ''
   };
 
   constructor(private userService: UsersService, private router: Router, private route: ActivatedRoute) { }

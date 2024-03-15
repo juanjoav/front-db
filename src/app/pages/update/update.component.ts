@@ -15,13 +15,16 @@ export class UpdateComponent {
     id: 0,
     name: '',
     lastName: '',
-    address: '',
-    phone: '',
-    email: '',
+    // address: '',
+    // phone: '',
+    // email: '',
     password: '',
+    dateOfBirth: '',
+    image: '',
+    username: ''
   };
 
-  constructor(private userService: UsersService, private formBuilder: FormBuilder,private router: Router, private route: ActivatedRoute) { 
+  constructor(private userService: UsersService, private formBuilder: FormBuilder,private router: Router, private route: ActivatedRoute) {
     this.registroForm = this.formBuilder.group({
       name: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -47,9 +50,9 @@ export class UpdateComponent {
         this.registroForm.patchValue({
           name: this.user.name,
           lastName: this.user.lastName,
-          address: this.user.address,
-          phone: this.user.phone,
-          email: this.user.email,
+          // address: this.user.address,
+          // phone: this.user.phone,
+          // email: this.user.email,
         })
       });
 
@@ -60,9 +63,9 @@ export class UpdateComponent {
   update(){
     this.user.name = this.registroForm.get('name')?.value;
     this.user.lastName = this.registroForm.get('lastName')?.value;
-    this.user.address = this.registroForm.get('address')?.value;
-    this.user.phone = this.registroForm.get('phone')?.value;
-    this.user.email = this.registroForm.get('email')?.value;
+    // this.user.address = this.registroForm.get('address')?.value;
+    // this.user.phone = this.registroForm.get('phone')?.value;
+    // this.user.email = this.registroForm.get('email')?.value;
     this.user.password = this.registroForm.get('password')?.value;
     this.userService.updateUser(this.user.id!,this.user).subscribe((user) => {
       console.log(user);

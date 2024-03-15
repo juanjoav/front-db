@@ -62,7 +62,7 @@
         class="w-full bg-red-500 text-white py-2 px-4 rounded ml-2 hover:bg-red-700 focus:outline-none focus:shadow-outline-red"
         (click)="cancel()"
         >
-        Cancelar 
+        Cancelar
       </button>
     </div>
 
@@ -77,8 +77,8 @@
       <h1 class="mb-2 text-2xl">Actualizacion de datos</h1>
     </div>
     <form class="p-2 w-96" [formGroup]="registroForm">
-  
-  
+
+
       <div class="mb-4">
         <label class="block ext-white text-lg font-bold mb-2" for="nombre">
           Nombre
@@ -93,15 +93,15 @@
         <input class="w-full border-none bg-green-800 bg-opacity-50 px-6 py-2 text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="text"
           formControlName="lastName" placeholder="Ingrese su apellido" />
       </div>
-  
-      <div class="mb-4">
+
+      <!-- <div class="mb-4">
         <label class="block ext-white text-lg font-bold mb-2" for="direccion">
           Dirección
         </label>
         <input class="w-full border-none bg-green-800 bg-opacity-50 px-6 py-2 text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="text"
           formControlName="address" placeholder="Ingrese su dirección" />
       </div>
-  
+
       <div class="mb-4">
         <label class="block ext-white text-lg font-bold mb-2" for="telefono">
           Teléfono
@@ -109,7 +109,7 @@
         <input class="w-full border-none bg-green-800 bg-opacity-50 px-6 py-2 text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="tel"
           formControlName="phone" placeholder="Ingrese su teléfono" />
       </div>
-  
+
       <div class="mb-4">
         <label class="block ext-white text-lg font-bold mb-2" for="correo">
           Correo Electrónico
@@ -117,7 +117,23 @@
         <input class="w-full border-none bg-green-800 bg-opacity-50 px-6 py-2 text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="email"
           formControlName="email" placeholder="Ingrese su correo electrónico" />
       </div>
-  
+   -->
+      <div class="mb-4">
+        <label class="block ext-white text-lg font-bold mb-2" for="dateOfBirth">
+          Fecha de Nacimiento
+        </label>
+        <input class="w-full border-none bg-green-800 bg-opacity-50 px-6 py-2 text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" formControlName="dateOfBirth"
+          id="dateOfBirth" placeholder="Ingrese su fecha de nacimiento" />
+      </div>
+
+      <div class="mb-4">
+        <label class="block ext-white text-lg font-bold mb-2" for="image">
+          Imagen
+        </label>
+        <input type="image" class="w-full border-none bg-green-800 bg-opacity-50 px-6 py-2 text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" formControlName="image"
+          id="image" placeholder="Ingrese Imagen" />
+      </div>
+
       <div class="mb-4">
         <label class="block ext-white text-lg font-bold mb-2" for="contrasena">
           Contraseña
@@ -125,7 +141,7 @@
         <input class="w-full border-none bg-green-800 bg-opacity-50 px-6 py-2 text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" formControlName="password"
           id="contrasena" placeholder="Ingrese su contraseña" />
       </div>
-  
+
       <div class="flex justify-center">
         <button
           class="w-full bg-green-800 text-white py-2 px-4 rounded hover:bg-blue-800 focus:outline-none focus:shadow-outline-blue"
@@ -133,15 +149,15 @@
           >
           Editar
         </button>
-  
+
         <button
           class="w-full bg-red-500 text-white py-2 px-4 rounded ml-2 hover:bg-red-700 focus:outline-none focus:shadow-outline-red"
           (click)="cancel()"
           >
-          Cancelar 
+          Cancelar
         </button>
       </div>
-  
+
     </form>
   </div>
 </div>

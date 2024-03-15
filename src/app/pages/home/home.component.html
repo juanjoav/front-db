@@ -4,47 +4,47 @@
   <div class="text-white">
     <div class="p-3 w-96">
       <h2 class="text-3xl font-semibold mb-6">Información del Usuario</h2>
-  
+
       <div class="flex justify-center mb-4">
         <img src="https://picsum.photos/200/150" alt="Imagen aleatoria" class="rounded-full mb-2" />
       </div>
-  
+
       <div class="grid grid-cols-2 gap-4 mb-4">
         <div>
           <strong class="block ext-white text-sm font-bold mb-2">Nombre:</strong> {{ usuario.name }}
         </div>
-  
+
         <div>
           <strong class="block ext-white text-sm font-bold mb-2">Apellido:</strong> {{ usuario.lastName }}
         </div>
       </div>
-  
-      <div class="mb-4">
+
+      <!-- <div class="mb-4">
         <strong class="block ext-white text-sm font-bold mb-2">Dirección:</strong> {{ usuario.address }}
       </div>
-  
+
       <div class="mb-4">
         <strong class="block ext-white text-sm font-bold mb-2">Teléfono:</strong> {{ usuario.phone }}
       </div>
-  
+
       <div class="mb-4">
         <strong class="block ext-white text-sm font-bold mb-2">Correo Electrónico:</strong> {{ usuario.email }}
-      </div>
-  
+      </div> -->
+
       <div class="flex justify-center">
         <button
           class="w-full bg-green-800 text-white py-2 px-4 rounded mr-2 hover:bg-blue-800 focus:outline-none focus:shadow-outline-blue"
           (click)="editarUsuario()">
           Editar
         </button>
-      
+
         <button
           class="w-full bg-red-500 text-white py-2 px-4 rounded ml-2 hover:bg-red-700 focus:outline-none focus:shadow-outline-red"
           (click)="eliminarUsuario()">
           Eliminar
         </button>
       </div>
-      
+
       <!-- Agregar el botón de cerrar sesión -->
       <div class="flex justify-center mt-4">
         <button
@@ -57,7 +57,7 @@
 
   </div>
 </div>
-</div>  
+</div>
 @if (isDeleteModalVisible) {
   <div class="absolute">
     <app-modal (onConfirm)="toggleDeleteModal()" [usuario]="usuario.id!"></app-modal>
