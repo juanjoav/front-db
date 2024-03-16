@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable, catchError, map, tap } from 'rxjs';
 import { Usuario } from '../models/usuario';
 
 
@@ -83,6 +83,16 @@ export class UsersService {
   isAuthorized(): boolean {
     const token = this.getToken();
     return !!token;
+  }
+
+  uploadImage(file: any): Observable<any> {
+    const formData = new FormData();
+    formData.append('upload_preset', 'users-images');
+    formData.append('file', file);
+
+    const url = 'https://api.cloudinary.com/v1_1/drrud1xry/image/upload';
+
+    return this.http.post<any>(`${url}`, formData);
   }
 
 }

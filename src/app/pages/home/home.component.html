@@ -7,7 +7,7 @@
           <h2 class="text-3xl font-semibold mb-6">Información del Usuario</h2>
 
           <div class="flex justify-center mb-4">
-            <img src="https://picsum.photos/200/150" alt="Imagen aleatoria" class="rounded-full mb-2" />
+            <img [src]="usuario.image ? usuario.image : 'https://picsum.photos/200/150'" alt="Imagen aleatoria" class="rounded-full mb-2" />
           </div>
 
           <div class="grid grid-cols-2 gap-4 mb-4">

@@ -93,6 +93,13 @@
         <input class="w-full border-none bg-green-800 bg-opacity-50 px-6 py-2 text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="text"
           formControlName="lastName" placeholder="Ingrese su apellido" />
       </div>
+      <div class="mb-4">
+        <label class="block ext-white text-lg font-bold mb-2" for="direccion">
+          Username
+        </label>
+        <input class="w-full border-none bg-green-800 bg-opacity-50 px-6 py-2 text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="text"
+          formControlName="username" placeholder="Ingrese su usuario" />
+      </div>
 
       <!-- <div class="mb-4">
         <label class="block ext-white text-lg font-bold mb-2" for="direccion">
@@ -130,8 +137,8 @@
         <label class="block ext-white text-lg font-bold mb-2" for="image">
           Imagen
         </label>
-        <input type="image" class="w-full border-none bg-green-800 bg-opacity-50 px-6 py-2 text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" formControlName="image"
-          id="image" placeholder="Ingrese Imagen" />
+        <input type="file" class="w-full border-none bg-green-800 bg-opacity-50 px-6 py-2 text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" formControlName="image"
+          id="image" placeholder="Ingrese Imagen" (change)="handleFileChange($event)"/>
       </div>
 
       <div class="mb-4">
