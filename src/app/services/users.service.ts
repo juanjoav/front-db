@@ -21,13 +21,11 @@ export class UsersService {
   }
 
   createUser(usuario: Usuario): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}create`, usuario);
+    return this.http.post<any>(`${this.newBaseUrl}register`, usuario);
   }
 
   getUserById(id: number): Observable<Usuario> {
-    //const headers = this.setAuthorizationHeader();
-    console.log(`${this.newBaseUrl}get/${id}`);
-    return this.http.get<Usuario>(`${this.newBaseUrl}${id}`/*,headers*/);
+    return this.http.get<Usuario>(`${this.newBaseUrl}${id}`);
   }
 
   getUserByEmail(email: string): Observable<Usuario> {
@@ -37,15 +35,12 @@ export class UsersService {
 
   updateUser(id: number, updatedUser: Usuario): Observable<Usuario> {
     const headers = this.setAuthorizationHeader();
-    return this.http.put<Usuario>(`${this.baseUrl}update/${id}`, updatedUser, headers);
+    return this.http.put<Usuario>(`${this.newBaseUrl}${id}`, updatedUser/*, headers*/);
   }
 
   deleteUser(id: number): Observable<Usuario> {
     const headers = this.setAuthorizationHeader();
-
-    console.log("Headers -> ",headers);
-
-    return this.http.delete<Usuario>(`${this.baseUrl}delete/${id}`, headers);
+    return this.http.delete<Usuario>(`${this.newBaseUrl}${id}`);
   }
 
 

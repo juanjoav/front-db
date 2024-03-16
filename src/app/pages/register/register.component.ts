@@ -22,7 +22,7 @@ export class RegisterComponent {
       // phone: ['', Validators.required],
       // email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      dateOfBirth: ['', Validators.required],
+      birthDate: ['', Validators.required],
       username: ['', Validators.required],
       image: ['', Validators.required]
     });

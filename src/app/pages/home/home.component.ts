@@ -14,12 +14,9 @@ export class HomeComponent {
     id: 0,
     name: '',
     lastName: '',
-    // address: '',
-    // phone: '',
-    // email: '',
     username: '',
     password: '',
-    dateOfBirth: '',
+    birthDate: '',
     image: ''
   };
 
@@ -30,15 +27,12 @@ export class HomeComponent {
   }
 
   loadData() {
-    console.log('Cargar datos');
      this.route.params.subscribe(params => {
       const id = +params['id'];
       this.userService.getUserById(id).subscribe((user) => {
         this.usuario = user;
-        console.log("Seteado -> ", this.usuario);
         const fullName = ''+ this.usuario.name + '' + this.usuario.lastName;
         const letterCount = this.countLetters(fullName);
-        console.log(letterCount);
       });
 
     });

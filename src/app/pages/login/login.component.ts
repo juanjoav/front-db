@@ -31,9 +31,7 @@ export class LoginComponent {
   
       this.userService.login(userForm.username, userForm.password).subscribe(
         (response: any) => {
-          console.log("Respuesta -> ",response);
           if(response != null){
-            console.log(" ID " + response.user.id)
             this.router.navigate(['/home/' + response.user.id]);
           }
         },
