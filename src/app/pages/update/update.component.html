@@ -125,6 +125,14 @@
           id="contrasena" placeholder="Ingrese su contraseña" />
       </div>
 
+      <div formArrayName="roles" class="roles-selector">
+        <div *ngFor="let rol of rolesDisponibles; let i = index">
+          <label>
+            <input type="checkbox" [formControlName]="i"> {{rol.description}}
+          </label>
+        </div>
+      </div>
+
       <div class="flex justify-center">
         <button
           class="w-full bg-green-800 text-white py-2 px-4 rounded hover:bg-blue-800 focus:outline-none focus:shadow-outline-blue"

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { UsersService } from '../../services/users.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from '../../models/usuario';
+import { RolService } from '../../services/rol.service';
+import { Roles } from '../../models/roles';
 
 @Component({
   selector: 'app-update',
@@ -13,6 +15,7 @@ export class UpdateComponent {
   registroForm: FormGroup;
   imageUrl: any = '';
   fileImg: any = '';
+  rolesDisponibles: Roles[] = [];
 
   user: Usuario = {
     id: 0,
@@ -24,19 +27,21 @@ export class UpdateComponent {
     username: ''
   };
 
-  constructor(private userService: UsersService, private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute) {
+  constructor(private userService: UsersService, private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute, private rolService: RolService) {
     this.registroForm = this.formBuilder.group({
       name: ['', Validators.required],
       lastName: ['', Validators.required],
       birthDate: ['', Validators.required],
       username: ['', Validators.required],
       image: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      roles: this.formBuilder.array([])
     });
 
   }
 
   ngOnInit(): void {
+    this.loadRoles();
     this.loadData();
   }
 
@@ -66,6 +71,15 @@ export class UpdateComponent {
     this.user.username = this.registroForm.get('username')?.value;
     this.user.image = this.registroForm.get('image')?.value;
     this.user.password = this.registroForm.get('password')?.value;
+
+    const selectedRoles = this.registroForm.value.roles
+    .map((checked: boolean, i: number) => checked ? this.rolesDisponibles[i] : null)
+    .filter((rol: Roles | null) => rol !== null);
+    console.log("Roles seleccionados:", selectedRoles);
+
+    if (selectedRoles.length > 0) {
+      this.user.roles = selectedRoles;
+    }
 
     if (this.fileImg != '') {
       this.userService.uploadImage(this.fileImg).subscribe((response) => {
@@ -97,6 +111,16 @@ export class UpdateComponent {
     } else {
       this.imageUrl = null;
     }
+  }
+
+  loadRoles() {
+    this.rolService.getAllRols().subscribe((response: Roles[]) => {
+      this.rolesDisponibles = response;
+      const rolesFormArray = this.registroForm.get('roles') as FormArray;
+      this.rolesDisponibles.forEach(() => {
+        rolesFormArray.push(this.formBuilder.control(false));
+      });
+    });
   }
 
 }

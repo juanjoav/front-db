@@ -1,3 +1,5 @@
+import { Roles } from "./roles";
+
 export interface Usuario{
     id?: number;//
     name: string;//
@@ -6,4 +8,5 @@ export interface Usuario{
     username: string;//
     image: string;//
     birthDate?: string;
+    roles?: Roles[];
   }
